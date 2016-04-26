@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require 'zip'
 require 'json'
 require 'nokogiri'
@@ -25,7 +24,6 @@ module ZipCodeJp
     end
 
     def self.to_hash_office(row)
-	String.force_encoding("UTF-8")
 	 {
       :zip_code        => row[7],
       :prefecture      => NKF.nkf('-S -w', row[3]),
