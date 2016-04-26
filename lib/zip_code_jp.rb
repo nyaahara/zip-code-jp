@@ -8,7 +8,6 @@ module ZipCodeJp
 
   module_function
   def export_json
-	Iconv.iconv("UTF-8//IGNORE","CP1250", "\x8F\x98")
     ZipCodeJp::Export.execute
   end
 
