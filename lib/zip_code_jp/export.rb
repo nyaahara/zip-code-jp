@@ -26,9 +26,9 @@ module ZipCodeJp
     def self.to_hash_office(row)
 	 {
       :zip_code        => row[7],
-      :prefecture      => NKF.nkf('-S -w', row[3].gsub(/\u\x8F/, '')),
-      :city      => NKF.nkf('-S -w', row[4].gsub(/\u\x8F/, '')),
-      :town      => NKF.nkf('-S -w', row[9].gsub(/\u\x8F/, '')),
+      :prefecture      => NKF.nkf('-S -w', row[3]),
+      :city      => NKF.nkf('-S -w', row[4]),
+      :town      => NKF.nkf('-S -w', row[9]),
     }
   end
 
