@@ -8,6 +8,7 @@ module ZipCodeJp
 
   module_function
   def export_json
+	Iconv.iconv("UTF-8//IGNORE","CP1250", "\x8F\x98")
     ZipCodeJp::Export.execute
   end
 
@@ -21,7 +22,7 @@ module ZipCodeJp
       if address_data.instance_of?(Array)
         results = []
         address_data.each do |a|
-          results.push ZipCodeJp::Address.new(a) 
+          results.push ZipCodeJp::Address.new(a)
         end
         return results
       end
