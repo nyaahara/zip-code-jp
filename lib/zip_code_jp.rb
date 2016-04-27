@@ -30,4 +30,10 @@ module ZipCodeJp
     end
     return false
   end
+
+  def all
+    json_files = Dir.glob("#{DATA_DIR}/zip_code/*.json").sort
+    addresses = json_files.map { |p| JSON.parse(File.open(p).read).values }.flatten
+    addresses.map { |address| ZipCodeJp::Address.new(address) }
+  end
 end
