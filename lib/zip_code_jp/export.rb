@@ -73,7 +73,7 @@ module ZipCodeJp
         archives.each do |a|
           CSV.parse(a.get_input_stream.read) do |row|
             h = to_hash_office(row)
-            h[:prefecture_code] = prefecture_codes[h[:prefecture]]
+            h[:prefecture_code] = prefecture_codes.invert[h[:prefecture]]
             first_prefix  = h[:zip_code].slice(0,3)
             second_prefix = h[:zip_code].slice(3,4)
             zip_codes[first_prefix] = {} unless zip_codes[first_prefix]
