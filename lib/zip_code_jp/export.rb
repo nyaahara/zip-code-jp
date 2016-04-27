@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require 'zip'
 require 'json'
 require 'nokogiri'
@@ -28,8 +27,8 @@ module ZipCodeJp
 	 {
       :zip_code        => row[7],
       :prefecture      => NKF.nkf('-S -w', row[3]),
-      :city            => NKF.nkf('-S -w', row[4]),
-      :town            => NKF.nkf('-S -w', row[9]),
+      :city      => NKF.nkf('-S -w', row[4]),
+      :town      => NKF.nkf('-S -w', row[9]),
     }
   end
 
@@ -73,7 +72,7 @@ module ZipCodeJp
 	  Zip::File.open(open('http://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip').path) do |archives|
         archives.each do |a|
           CSV.parse(a.get_input_stream.read) do |row|
-            h = to_hash(row)
+            h = to_hash_office(row)
             h[:prefecture_code] = prefecture_codes[h[:prefecture]]
             first_prefix  = h[:zip_code].slice(0,3)
             second_prefix = h[:zip_code].slice(3,4)
