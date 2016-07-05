@@ -28,7 +28,7 @@ module ZipCodeJp
       :zip_code        => row[7],
       :prefecture      => NKF.nkf('-S -w', row[3]),
       :city      => NKF.nkf('-S -w', row[4]),
-      :town      => NKF.nkf('-S -w', row[9]),
+      :town      => NKF.nkf('-S -w', row[5]),
     }
   end
 
